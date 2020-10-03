@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { SearchResult } from './search-result.model';
+
 import { WikiService } from './wiki.service';
 
 @Component({
@@ -9,12 +11,12 @@ import { WikiService } from './wiki.service';
 })
 export class AppComponent {
   pages: SearchResult[] = [];
+  dataSource = new MatTableDataSource<SearchResult>(this.pages);
 
   constructor(private wikiService: WikiService) {}
   onTerm(term: string) {
     this.wikiService.search(term).subscribe((response: any) => {
-      this.pages = response.query.search;
-      console.log(this.pages);
+      this.dataSource.data = response.query.search;
     });
   }
 }

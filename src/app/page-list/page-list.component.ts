@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { SearchResult } from '../search-result.model';
 
 @Component({
@@ -7,10 +8,8 @@ import { SearchResult } from '../search-result.model';
   styleUrls: ['./page-list.component.css'],
 })
 export class PageListComponent implements OnInit {
-  @Input() pages: SearchResult[] = [];
-
-  displayedColumns: string[] = ['position', 'title', 'wordcount', 'snippet'];
-  dataSource = this.pages;
+  displayedColumns: string[] = ['title', 'wordcount', 'snippet'];
+  @Input() dataSource;
 
   constructor() {}
 
