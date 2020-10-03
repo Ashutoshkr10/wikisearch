@@ -1,0 +1,8 @@
+<form (submit)="onFormSubmit($event)">
+  <mat-form-field class="example-full-width">
+    <mat-label>Search</mat-label>
+    <input matInput (input)="term = $event.target.value" />
+  </mat-form-field>
+  <br />
+  <button mat-raised-button type="submit">Search</button>
+</form>
